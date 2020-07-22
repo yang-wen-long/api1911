@@ -24,15 +24,32 @@ Route::post("/user/reg","Admin\LoginController@Reg");
 //后台登陆
 Route::post("/user/Login","Admin\LoginController@Login");
 //后台展示用户方法
-Route::post("/user/center","Admin\LoginController@center");
+Route::post("/user/center","Admin\LoginController@center")->middleware("isLogin");
 
-//测试方法
-Route::get("/text","Admin\LoginController@text");
+//使用Redis有序集合实现签到功能：
+Route::get("/user/qiandao","Admin\LoginController@qiandao");
+
+
+//用redis缓存用户信息
+Route::get("/user/Signin","Admin\LoginController@Signin");
+
+//使用Redis中Hash实现每个用户访问的接口统计
+Route::get("/user/stati","Admin\LoginController@stati")->middleware("fangwen");
+
+
+//商品的抢购
+Route::post("/user/goods","Api\TestController@goods")->middleware("fangwen");
 
 
 
-Route::get("/Token","Api\TestController@index");
+
+
+
+
+//调用微信Token方法
+Route::get("/Token","Api\TestController@index")->middleware("isLogin");
 Route::get("/user/Info","Api\TestController@info");
+
 
 
 

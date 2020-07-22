@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 //Token
 use App\Model\Token;
 use Illuminate\Support\Facades\Redis;
+//商品表
+use App\Model\goods;
 class LoginController extends Controller
 {
     //注册展示方法
@@ -107,14 +109,13 @@ class LoginController extends Controller
         Redis::incr("name");
         //查询次数
         $name = Redis::get("name");
-        if($name > 10){
+        if($name > 20){
             $redisce = [
                 "error" => 40009,
                 "msg" => "请求Token次数超限",
             ];
             return $redisce;
         }
-        dd($name);
         //Token的过期时间
         $tim = "7200";
         //回馈用户的随机数
@@ -142,6 +143,25 @@ class LoginController extends Controller
     public function center(){
         $token = request()->get("token");
         $name = Token::OrderBY("id","desc")->where("token",$token)->first();
+        $user = User::where("user_id",$name->user_id)->first();
+        if($user){
+            $redisce = [
+                "error" => 0,
+                "msg" => "OK",
+                "data" => [
+                    "user_name" => "$user->user_name",
+                    "Email" => "$user->Email",
+                    "time" => "$user->time"
+                ]
+            ];
+            return $redisce;
+        }
+    }
+
+    //使用Redis有序集合实现签到功能：
+    public function qiandao(){
+        $token = request()->get("token");
+        $name = Token::OrderBY("id","desc")->where("token",$token)->first();
         //判断用户是否存在
         if(!$name){
             $redisce = [
@@ -158,61 +178,129 @@ class LoginController extends Controller
             ];
             return $redisce;
         }
-        $user = User::where("user_id",$name->user_id)->first();
-        if($user){
+        $key = "$token".$name->time;
+        $namedesc = $name->user_name;
+        $id = $name->user_id;
+        $nameset = Redis::get($key);
+        if($nameset){
+            $redisce = [
+                "error" => 40009,
+                "msg" => "今天已签到，请等明天在签到!",
+            ];
+            return $redisce;
+        }else{
+            Redis::set($key,$id);
+            Redis::expire($key,172800);
+            $Thesame = Redis::zscore($key, $namedesc);
+            if ($Thesame) {
+                $names = Redis::zincrby($key, 1, $namedesc);
+                $namekey = $names;
+                $redisce = [
+                    "error" => 0,
+                    "msg" => "签到成功，已签到" . $namekey . "天",
+                ];
+                return $redisce;
+            }else {
+                Redis::zadd($key, 1, $namedesc);
+                $redisce = [
+                    "error" => 0,
+                    "msg" => "签到成功，已签到1天",
+                ];
+                return $redisce;
+            }
+        }
+    }
+    //用redis缓存用户信息
+    public function Signin(){
+        //接过来的参数
+        $goods_id = request()->get("goods_id");
+        //拼接key
+        $key = "H:goods_info:".$goods_id;
+        //根据传过来的id进redis进行查询
+        $goods_info = Redis::hgetAll($key);
+        //判断是否成功
+        if(empty($goods_info)){
+            $gey = goods::select("goods_id","goods_sn","goods_name","cat_id")->find($goods_id);
+            $goods_info = $gey->toArray();
+            $goods = Redis::hmset($key,$goods_info);
+            echo "缓存";
+            echo "<pre>";print_r($goods_info);echo "</pre>";
+        }else{
+            echo "不缓存";
+            echo "<pre>";print_r($goods_info);echo "</pre>";
+        }
+        
+    }
+
+
+
+
+    //使用Redis中Hash实现每个用户访问的接口统计
+    public function stati(){
+        //获取穿过来到值
+        $token = request()->get("token");
+        //根据值查询数据库
+        $name = Token::OrderBY("id","desc")->where("token", $token)->first();
+        //根据数据查询用户
+        $names = User::where("user_id",$name->user_id)->first();
+        //拼接条件
+        $kye = $names->Email.$names->time;
+        $name_desc = Redis::hlen($kye);
+        if($name_desc > 1){
+            //查询数据
+            $name_desc = Redis::hgetAll($kye);
+            $add=[];
+            foreach($name_desc as $k=>$a){
+                  $add[$a]=$k;
+            }
+            dump("浪费点卡");
+            dd($add);
+        }else{
+            //查询数据
+            $name_desc = Redis::hgetAll($kye);
+            //获取一维数组的下标
+            $name_name = array_keys($name_desc);
+            //获取一维数组的值
+            $name_key = array_values($name_desc);
+            //将数组去除前部分
+            $name_descf = array_shift($name_name);
+            //截取字符串从前20位开始截取
+            $Fullpath = substr($name_descf,20);
+            //将一维数组去除前部分
+            $values = array_shift($name_key);
+            //数组返回数据
             $redisce = [
                 "error" => 0,
-                "msg" => "OK",
+                "msg" => "查询成功",
                 "data" => [
-                    "user_name" => "$user->user_name",
-                    "Email" => "$user->Email",
-                    "time" => "$user->time"
-                ]
+                    "$Fullpath" => $values,
+                ],
             ];
             return $redisce;
         }
+    }
 
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public function text(){
-//        Redis::set("desc","汉字");
-//        Redis::expire("desc","60");
-        if(time()+60){
-            $name = "100";
-            if($name > 10){
-                dd("10");
-            }else{
-                dd("4");
-            }
-        }else{
-            dd("你好");
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
