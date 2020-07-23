@@ -25,16 +25,20 @@ Route::post("/user/reg","Admin\LoginController@Reg");
 Route::post("/user/Login","Admin\LoginController@Login");
 //后台展示用户方法
 Route::post("/user/center","Admin\LoginController@center")->middleware("isLogin");
-
 //使用Redis有序集合实现签到功能：
 Route::get("/user/qiandao","Admin\LoginController@qiandao");
-
-
 //用redis缓存用户信息
 Route::get("/user/Signin","Admin\LoginController@Signin");
-
 //使用Redis中Hash实现每个用户访问的接口统计
 Route::get("/user/stati","Admin\LoginController@stati")->middleware("fangwen");
+
+
+//用对称加密
+Route::get("/user/encrypt","Admin\OpenController@encrypt");
+
+//加密接口
+Route::get("/user/openssl","Admin\OpenController@openssl");
+
 
 
 //商品的抢购
