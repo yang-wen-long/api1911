@@ -42,7 +42,8 @@ Route::post("/user/goods","Api\TestController@goods")->middleware("fangwen");
 
 
 
-
+//用户缓存
+Route::get("/user/user_name","Admin\LoginController@user_name")->middleware("isLogin");
 
 
 

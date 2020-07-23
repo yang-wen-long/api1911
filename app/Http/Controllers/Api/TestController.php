@@ -30,7 +30,7 @@ class TestController extends Controller
     //商品的抢购
     public function goods(){
         //添加购买数量
-       //$name = Redis::lpush("goods",1,1,1,1,1,1,1,1,1);
+//       $name = Redis::lpush("goods",1,1,1,1,1,1,1,1,1);
         //购买数量
         $name = request()->get("goods");
         if(empty($name)){

@@ -232,7 +232,68 @@ class LoginController extends Controller
         
     }
 
-
+    //用户缓存
+    public function user_name(){
+        $Token = request()->get("token");
+        $user_token = Token::where("token",$Token)->first();
+        $user_name =  User::select("user_name","time","Email")->where("user_id",$user_token->user_id)->first();
+        $key = $user_name->time.$user_name->Email;
+        $keys  = $user_name->Email;
+        $redis_name = Redis::hgetAll($key);
+        if(empty($redis_name)){
+            dump("缓存");
+            /*App\Model\User {
+                          #293
+                          #table: "user"
+                          #primaryKey: "user_id"
+                          +timestamps: false
+                          #guarded: []
+                          #connection: "mysql"
+                          #keyType: "int"
+                          +incrementing: true
+                          #with: []
+                          #withCount: []
+                          #perPage: 15
+                          +exists: true
+                          +wasRecentlyCreated: false
+                          #attributes: array:3 [
+                            "user_name" => "哑铃"
+                            "time" => "1594977871"
+                            "Email" => "2382662404@qq.com"
+                          ]
+                          #original: array:3 [
+                            "user_name" => "哑铃"
+                            "time" => "1594977871"
+                            "Email" => "2382662404@qq.com"
+                          ]
+                          #changes: []
+                          #casts: []
+                          #dates: []
+                          #dateFormat: null
+                          #appends: []
+                          #dispatchesEvents: []
+                          #observables: []
+                          #relations: []
+                          #touches: []
+                          #hidden: []
+                          #visible: []
+                          #fillable: []
+              }
+             */
+            $user_names = $user_name->toArray();
+            /*array:3 [
+                      "user_name" => "哑铃"
+                      "time" => "1594977871"
+                      "Email" => "2382662404@qq.com"
+              ]
+             */
+            Redis::hmset($key,$user_names);
+            dd($user_names);
+        }else{
+            dump("不缓存");
+            dd($redis_name);
+        }
+    }
 
 
     //使用Redis中Hash实现每个用户访问的接口统计
@@ -249,12 +310,18 @@ class LoginController extends Controller
         if($name_desc > 1){
             //查询数据
             $name_desc = Redis::hgetAll($kye);
-            $add=[];
-            foreach($name_desc as $k=>$a){
-                  $add[$a]=$k;
-            }
-            dump("浪费点卡");
-            dd($add);
+//            dd($name_desc);
+//            foreach($name_desc as $k=>$a){
+                //数组返回数据
+                $redisce = [
+                    "error" => 0,
+                    "msg" => "查询成功",
+                    "data" => [
+                        $name_desc,
+                    ],
+                ];
+                return $redisce;
+//            }
         }else{
             //查询数据
             $name_desc = Redis::hgetAll($kye);
@@ -279,7 +346,6 @@ class LoginController extends Controller
             return $redisce;
         }
     }
-
 
 
 

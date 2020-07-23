@@ -17,6 +17,15 @@ class ViewModdle
     public function handle($request, Closure $next)
     {
         $token = request()->get("token");
+        $name_desc_f = Token::where("token",$token)->first();
+        if(!$name_desc_f){
+            $redisce = [
+                "error" => 40008,
+                "msg" => "未授权",
+            ];
+//               print_r($redisce);die;
+            echo  json_encode($redisce,JSON_UNESCAPED_UNICODE);die;
+        }
        if($token){
            $name = Token::OrderBY("id","desc")->where("token",$token)->first();
            //判断用户是否存在
@@ -48,6 +57,7 @@ class ViewModdle
            echo  json_encode($redisce,JSON_UNESCAPED_UNICODE);die;
        }
         return $next($request);
+
     }
     //防止刷取信息
     public function fang($name){
