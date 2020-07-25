@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use GuzzleHttp\Client;
 class OpenController extends Controller
 {
     /*
@@ -19,28 +19,71 @@ class OpenController extends Controller
         $key = "api1911";           //key。
        //options 是以下标记的按位或： OPENSSL_RAW_DATA 、 OPENSSL_ZERO_PADDING。
         $iv = "aaaabbbbccccdddd";   //非 NULL 的初始化向量。
-        echo "<pre>";echo "原始：".$data;echo "</pre>";
+        echo "<pre>";echo "原始 ：".$data;echo "</pre>";
         $name = openssl_encrypt($data,$method,$key,OPENSSL_RAW_DATA,$iv);   //echo openssl_error_string();die;用来解决问题
         echo "<pre>";echo "加密：".$name;echo "</pre>";
-
         $desc = openssl_decrypt($name,$method,$key,OPENSSL_RAW_DATA,$iv);
         echo "<pre>";echo "解密：".$desc;echo "</pre>";
     }
 
 
-    //加密接口
+    //对称加密接口
     public function openssl(){
-        dd("jgk");
+        $data  = request()->get("data");    //待加密的明文信息数据。
+        $datas = base64_decode($data);
+        $name = $this->openssl_decrytp($datas);
+        print_r($name);
+    }
+
+    //非对称加密接口
+    public function aesc1(){
+        $name = request()->get('name');
+        //转码
+        $names = base64_decode($name);
+        // $name 这将保存加密的结果。
+        $contents = file_get_contents(storage_path("keys/prin.key"));
+        $key = openssl_get_privatekey($contents);
+//        dd($key);
+        //密钥解密
+        openssl_private_decrypt($names,$data,$key,OPENSSL_PKCS1_OAEP_PADDING);
+        dump($data);
+    }
+
+    //非对称加密
+    public function desc2(){
+        dd("jkds");
     }
 
 
 
 
+    //用公钥解密签名
+    public function desc1(){
+        $name = request()->get("name");
+        $data = request()->get("data");
+        $names = base64_decode($name);
+        $key = file_get_contents(storage_path("keys/www.pub.key"));
 
+        $datas = openssl_verify($data,$names,$key,OPENSSL_ALGO_SHA1);
+        if($datas == 1){
+            echo "OK";
+        }else if($datas == 0){
+            echo "NO";
+        }else{
+            echo "内部发生了错误";
+        }
+    }
 
+    //验证签名
+    public function desc(){
+        $data = "留得青山在，不怕没柴烧";
+        $key = '1911_api';
+        $shal = sha1($data.$key);
+        $url = "http://www.1911.com/user/desc?data=".$data."&shal=".$shal;
+        $name = file_get_contents($url);
+        echo $name;
 
-
-
+    }
 
 
 
@@ -67,8 +110,6 @@ class OpenController extends Controller
         $name = openssl_decrypt($data, $method, $key, OPENSSL_RAW_DATA, $iv);
         return $name;
     }
-
-
 
 
 

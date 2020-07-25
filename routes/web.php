@@ -36,9 +36,18 @@ Route::get("/user/stati","Admin\LoginController@stati")->middleware("fangwen");
 //用对称加密
 Route::get("/user/encrypt","Admin\OpenController@encrypt");
 
-//加密接口
-Route::get("/user/openssl","Admin\OpenController@openssl");
 
+
+//对称加密接口
+Route::get("/user/openssl","Admin\OpenController@openssl");
+//非对称加密接口
+Route::post("/user/aesc1","Admin\OpenController@aesc1");
+//非对称加密
+Route::post("/user/desc2","Admin\OpenController@desc2");
+//验证标签
+Route::get("/user/desc","Admin\OpenController@desc");
+//用公钥解密签名
+Route::post("/user/desc1","Admin\OpenController@desc1");
 
 
 //商品的抢购
