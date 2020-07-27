@@ -49,6 +49,10 @@ Route::get("/user/desc","Admin\OpenController@desc");
 //用公钥解密签名
 Route::post("/user/desc1","Admin\OpenController@desc1");
 
+ //签名方式
+Route::get("/user/desc3","Admin\OpenController@desc3");
+
+
 
 //商品的抢购
 Route::post("/user/goods","Api\TestController@goods")->middleware("fangwen");

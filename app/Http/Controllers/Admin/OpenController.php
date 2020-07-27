@@ -51,7 +51,7 @@ class OpenController extends Controller
 
     //非对称加密
     public function desc2(){
-        dd("jkds");
+        dd("kfjdh ");
     }
 
 
@@ -84,6 +84,28 @@ class OpenController extends Controller
         echo $name;
 
     }
+
+
+    //签名方式
+    public function desc3(){
+        $name = "12345";
+        $token = "Zhaoyalin";
+        $url = "http://www.1911.com//user/desc2";
+        $heaters = [
+            "name".$name,
+            "token".$token,
+        ];
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,$heaters);
+        curl_exec($ch);
+        curl_close($ch);
+    }
+
+
+
+
+
 
 
 

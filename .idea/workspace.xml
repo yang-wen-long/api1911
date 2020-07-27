@@ -4,7 +4,6 @@
     <list default="true" id="d6788c3e-7294-4538-bd59-565338ac06c7" name="默认的" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OpenController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OpenController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/carbon" afterPath="$PROJECT_DIR$/vendor/bin/carbon" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/commonmark" afterPath="$PROJECT_DIR$/vendor/bin/commonmark" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/php-parse" afterPath="$PROJECT_DIR$/vendor/bin/php-parse" />
@@ -22,32 +21,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="63" column="56" lean-forward="false" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
+            <state relative-caret-position="468">
+              <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OpenController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="OpenController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/OpenController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+            <state relative-caret-position="1026">
+              <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
                 <element signature="e#181#259#0#PHP" expanded="false" />
                 <element signature="e#264#947#0#PHP" expanded="false" />
                 <element signature="e#967#1168#0#PHP" expanded="false" />
                 <element signature="e#1188#1593#0#PHP" expanded="false" />
-                <element signature="e#1684#2127#0#PHP" expanded="false" />
-                <element signature="e#2144#2402#0#PHP" expanded="false" />
-                <element signature="e#2411#2595#0#PHP" expanded="false" />
-                <element signature="e#2600#2801#0#PHP" expanded="false" />
-                <element signature="e#2806#3004#0#PHP" expanded="false" />
-                <element signature="e#3009#3214#0#PHP" expanded="false" />
+                <element signature="e#1686#2129#0#PHP" expanded="false" />
+                <element signature="e#2146#2404#0#PHP" expanded="false" />
+                <element signature="e#2830#3014#0#PHP" expanded="false" />
+                <element signature="e#3019#3220#0#PHP" expanded="false" />
+                <element signature="e#3225#3423#0#PHP" expanded="false" />
+                <element signature="e#3428#3633#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -266,24 +265,27 @@
       <workItem from="1595634864994" duration="782000" />
       <workItem from="1595638177964" duration="933000" />
       <workItem from="1595642775469" duration="612000" />
+      <workItem from="1595817065365" duration="956000" />
+      <workItem from="1595818953929" duration="6222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142098000" />
+    <option name="totallyTimeSpent" value="149276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1932" height="1045" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14369658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14690171" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="层次结构" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -307,7 +309,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -321,12 +323,12 @@
             <element signature="e#264#947#0#PHP" expanded="false" />
             <element signature="e#967#1168#0#PHP" expanded="false" />
             <element signature="e#1188#1593#0#PHP" expanded="false" />
-            <element signature="e#1684#2127#0#PHP" expanded="false" />
-            <element signature="e#2144#2402#0#PHP" expanded="false" />
-            <element signature="e#2411#2595#0#PHP" expanded="false" />
-            <element signature="e#2600#2801#0#PHP" expanded="false" />
-            <element signature="e#2806#3004#0#PHP" expanded="false" />
-            <element signature="e#3009#3214#0#PHP" expanded="false" />
+            <element signature="e#1686#2129#0#PHP" expanded="false" />
+            <element signature="e#2146#2404#0#PHP" expanded="false" />
+            <element signature="e#2830#3014#0#PHP" expanded="false" />
+            <element signature="e#3019#3220#0#PHP" expanded="false" />
+            <element signature="e#3225#3423#0#PHP" expanded="false" />
+            <element signature="e#3428#3633#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,30 +680,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/OpenController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+        <state relative-caret-position="1026">
+          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding>
             <element signature="e#181#259#0#PHP" expanded="false" />
             <element signature="e#264#947#0#PHP" expanded="false" />
             <element signature="e#967#1168#0#PHP" expanded="false" />
             <element signature="e#1188#1593#0#PHP" expanded="false" />
-            <element signature="e#1684#2127#0#PHP" expanded="false" />
-            <element signature="e#2144#2402#0#PHP" expanded="false" />
-            <element signature="e#2411#2595#0#PHP" expanded="false" />
-            <element signature="e#2600#2801#0#PHP" expanded="false" />
-            <element signature="e#2806#3004#0#PHP" expanded="false" />
-            <element signature="e#3009#3214#0#PHP" expanded="false" />
+            <element signature="e#1686#2129#0#PHP" expanded="false" />
+            <element signature="e#2146#2404#0#PHP" expanded="false" />
+            <element signature="e#2830#3014#0#PHP" expanded="false" />
+            <element signature="e#3019#3220#0#PHP" expanded="false" />
+            <element signature="e#3225#3423#0#PHP" expanded="false" />
+            <element signature="e#3428#3633#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="63" column="56" lean-forward="false" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
