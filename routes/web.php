@@ -52,6 +52,8 @@ Route::post("/user/desc1","Admin\OpenController@desc1");
  //签名方式
 Route::get("/user/desc3","Admin\OpenController@desc3");
 
+//Header传参
+Route::get("/user/header","Admin\OpenController@header");
 
 
 //商品的抢购

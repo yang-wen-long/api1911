@@ -136,7 +136,12 @@ class OpenController extends Controller
 
 
 
-
+    /*
+     *header传参
+     */
+    public function header(){
+        $url = "";
+    }
 
 
 
